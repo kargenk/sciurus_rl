@@ -1,24 +1,7 @@
-from __future__ import annotations
-import time
-
-import numpy as np
-import matplotlib.pyplot as plt
-import moviepy.editor as mpy
 import pybullet as p
 import pybullet_data
 
-
-def save_video(frames: list[np.ndarray], path: str, fps: int = 30) -> None:
-    """
-    動画を保存する関数．
-
-    Args:
-        frames (list[np.ndarray]): 動画にする連続した画像のリスト
-        path (str): 保存先のパス
-        fps (int, optional): 保存する動画のfps. Defaults to 30.
-    """
-    clip = mpy.ImageSequenceClip(frames, fps=30)
-    clip.write_videofile(path, fps)
+from utils import save_video
 
 
 if __name__ == '__main__':
@@ -34,16 +17,19 @@ if __name__ == '__main__':
     sciurus_id = p.loadURDF('data/sciurus17/sciurus17.urdf',
                             init_pos, init_orientation)
 
-    # 300フレームシミュレーションを行う
-    force = 200
+    # シミュレーションを行う
+    mode = p.VELOCITY_CONTROL
+    max_force = 200
     frames = []
-    for t in range(600):
+    for t in range(300):
         p.stepSimulation()
         if t % 10 == 0:
-            p.setJointMotorControl2(sciurus_id, 14, p.TORQUE_CONTROL, force=force)  # r_hand_mimic
-            p.setJointMotorControl2(sciurus_id, 24, p.TORQUE_CONTROL, force=force)  # l_hand_mimic
+            p.setJointMotorControl2(sciurus_id, 14, mode,
+                                    targetVelocity=0, force=max_force)  # r_hand_mimic
+            p.setJointMotorControl2(sciurus_id, 24, mode,
+                                    targetVelocity=0, force=max_force)  # l_hand_mimic
             # 10フレーム毎の計30フレーム(1s)シミュレーション結果を画像として取得
-            width, height, img_rgb, img_depth, img_seg = p.getCameraImage(360, 240)
+            width, height, img_rgb, img_depth, img_seg = p.getCameraImage(360, 240)  # 最新の3.1.0ではタプルで返すので注意s
             frames.append(img_rgb)
     save_video(frames, 'result/sample.mp4')  # 結果を動画で保存
 
