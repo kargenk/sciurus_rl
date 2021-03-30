@@ -51,10 +51,10 @@ class Sciurus:
         # Sciurusの両腕のjoint IDと初期位置(right: 7 + left: 7)
         # 13と23はハンドの垂直方向の角度, 14と24はハンドの把持具合
         # ref: github.com/rt-net/sciurus17_ros/sciurus17_moveit_config/config/sciurus17.srdf *_arm_waist_init_pose
-        self.arm_joints = [5, 6, 7, 8, 9, 11, 12, 13,
-                           15, 16, 17, 18, 19, 21, 22, 23]
-        self.joint_positions = [-0.3574, -1.5707, 0, 2.7262, 0, -1.1155, 0, 0,
-                                0.3574, 1.5707, 0, -2.7262, 0, 1.1155, 0, 0]
+        self.arm_joints = [5, 6, 7, 8, 9, 11, 12, 13, 14,
+                           15, 16, 17, 18, 19, 21, 22, 23, 24]
+        self.joint_positions = [-0.3574, -1.5707, 0, 2.7262, 0, -1.1155, 0, 0, 0,
+                                0.3574, 1.5707, 0, -2.7262, 0, 1.1155, 0, 0, 0]
         for i, j_id in enumerate(self.arm_joints):
             p.resetJointState(self.sciurus_id, j_id, self.joint_positions[i], physicsClientId=self.client)
             p.setJointMotorControl2(self.sciurus_id, j_id,
@@ -112,7 +112,7 @@ class Sciurus:
         """
         for i, action in enumerate(actions):
             motor = self.arm_joints[i]
-            print(f'i: {i}, action: {action}, motor: {motor}')
+            # print(f'i: {i}, action: {action}, motor: {motor}')  # for debug
             p.setJointMotorControl2(self.sciurus_id, motor, p.POSITION_CONTROL,
                                     targetPosition=action,
                                     force=self.max_force,

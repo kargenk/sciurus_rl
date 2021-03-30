@@ -100,7 +100,8 @@ class SciurusGraspEnv(gym.Env):
             else:
                 self.action_space = spaces.Discrete(7)
         else:
-            self.action_space = spaces.Box(low=-1, high=1, shape=(8,))  # dx, dy, da
+            self.action_space = spaces.Box(low=-1, high=1, shape=(9,))  # 右腕のジョイントのモーター角
+            # Now, not working ...
             if self._remove_height_hack:
                 self.action_space = spaces.Box(low=-1, high=1, shape=(4,))  # dx, dy, dz, da
         self.observation_space = spaces.Box(low=0, high=255, shape=(self._height, self._width, 3))
@@ -198,10 +199,11 @@ class SciurusGraspEnv(gym.Env):
 
         # エピソードごとに初期化する必要のある変数
         self._attempted_grasp = False
+        self._grasp_success = False
         self._env_step = 0
         self._env_step_counter = 0
         self.terminated = 0
-        self._action = [-0.3574, -1.5707, 0, 2.7262, 0, -1.1155, 0, 0]  # 右腕の初期位置
+        self._action = [-0.3574, -1.5707, 0, 2.7262, 0, -1.1155, 0, 0, 0]  # 右腕の初期モーター角
 
         p.resetSimulation()  # 全オブジェクトを消去
         p.setPhysicsEngineParameter(numSolverIterations=150)
@@ -237,7 +239,8 @@ class SciurusGraspEnv(gym.Env):
         Returns:
             bool: 終了判定フラグ
         """
-        return self._attempted_grasp or self._env_step >= self._max_steps
+        # 把持成功か最大ステップ数を越えれば終了
+        return self._grasp_success or self._env_step >= self._max_steps
 
     def _reward(self) -> int:
         """
@@ -247,14 +250,16 @@ class SciurusGraspEnv(gym.Env):
         Returns:
             int: 報酬
         """
+        # TODO: 報酬がスパースすぎるので要検討
+
         reward = 0
-        self._graspSuccess = 0
+        self._grasp_success = False
 
         # 物体の内一つでも0.2以上の高さにあれば報酬を与える
         for obj_id in self._object_ids:
             pos, _ = p.getBasePositionAndOrientation(obj_id)
             if pos[2] > 0.2:
-                self._graspSuccess += 1
+                self._grasp_success = True
                 reward = 1
                 break
 
@@ -293,39 +298,39 @@ class SciurusGraspEnv(gym.Env):
 
         # トレーに十分近ければ(z座標が0.1以下)
         if r_end_effector_pos[2] <= 0.1:
-            finger_angle = 0.3
+            finger_angle = 0.9
+            grasp_action = self._action
             # 把持動作を行う
             for _ in range(500):
-                grasp_action = [0, 0, 0, 0, finger_angle]
+                grasp_action[-1] = finger_angle  # グリッパーの角度
                 self.sciurus.apply_action(grasp_action)
                 p.stepSimulation()
                 if self._render:
                     time.sleep(self._timestep)
-                finger_angle -= 0.03 / 100
+                # グリッパーの角度を徐々に小さくして把持を試みる
+                finger_angle -= 0.3 / 100
                 if finger_angle <= 0:
                     finger_angle = 0
-            # 少し高めでも試す
-            for _ in range(500):
-                grasp_action = [0, 0, 0.001, 0, finger_angle]
-                self.sciurus.apply_action(grasp_action)
-                p.stepSimulation()
-                if self._render:
-                    time.sleep(self._timestep)
-                finger_angle -= 0.03 / 100
-                if finger_angle <= 0:
-                    finger_angle = 0
+            # # 少し高めでも試す
+            # for _ in range(500):
+            #     grasp_action[-1] = finger_angle
+            #     grasp_action[n] = 0.001  # set z to 0.001
+            #     self.sciurus.apply_action(grasp_action)
+            #     p.stepSimulation()
+            #     if self._render:
+            #         time.sleep(self._timestep)
+            #     finger_angle -= 0.03 / 100
+            #     if finger_angle <= 0:
+            #         finger_angle = 0
             self._attempted_grasp = True
 
-        # 観測を得る
-        observation = self._get_observation()
+        observation = self._get_observation()  # 観測(状態)を得る
+        reward = self._reward()                # 報酬の計算
+        done = self._termination()             # 終了判定の更新
+        debug = {'attempted_grasp': self._attempted_grasp,
+                 'grasp_success': self._grasp_success}
 
-        # 報酬の計算
-        reward = self._reward()
-
-        # 終了判定の更新
-        done = self._termination()
-
-        return observation, reward, done, {}
+        return observation, reward, done, debug
 
     def my_render(self, mode: str = 'human') -> None:
         """
@@ -433,8 +438,15 @@ class SciurusGraspEnv(gym.Env):
 if __name__ == '__main__':
     env = SciurusGraspEnv()
     env.reset()
-    while True:
-        observation, reward, done, supp = env.my_step(env.action_space.sample())  # random
-        # observation, reward, done, supp = env.my_step([5, 0, 0, 0, 0, 0, 0, 0])
+
+    # 把持テスト用
+    for _ in range(2):
+        observation, reward, done, debug = env.step([5, 0, 0, -10, 0, 0, 0, 0, 0])  # 把持テスト用
+        print(debug)
+
+    # # ランダムに行動を選択
+    # while True:
+    #     observation, reward, done, supp = env.step(env.action_space.sample())  # random
+
     # plt.imshow(observation)
     # plt.show()
