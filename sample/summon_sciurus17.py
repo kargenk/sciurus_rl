@@ -24,10 +24,12 @@ if __name__ == '__main__':
     for t in range(300):
         p.stepSimulation()
         if t % 10 == 0:
+            # r_hand_mimic
             p.setJointMotorControl2(sciurus_id, 14, mode,
-                                    targetVelocity=0, force=max_force)  # r_hand_mimic
+                                    targetVelocity=0, force=max_force)
+            # l_hand_mimic
             p.setJointMotorControl2(sciurus_id, 24, mode,
-                                    targetVelocity=0, force=max_force)  # l_hand_mimic
+                                    targetVelocity=0, force=max_force)
             # 10フレーム毎の計30フレーム(1s)シミュレーション結果を画像として取得
             width, height, img_rgb, img_depth, img_seg = p.getCameraImage(360, 240)  # 最新の3.1.0ではタプルで返すので注意s
             frames.append(img_rgb)

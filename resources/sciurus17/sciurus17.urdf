@@ -13,14 +13,14 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <mesh filename="./meshes/visual/Base.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Base.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/Base.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/Base.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -40,14 +40,14 @@
   <link name="body_link">
     <visual>
       <geometry>
-        <mesh filename="./meshes/visual/Body.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Body.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/Body.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/Body.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -96,13 +96,13 @@
   <link name="neck_yaw_link">
     <visual>
       <geometry>
-        <mesh filename="./meshes/visual/Neck1.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Neck1.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="./meshes/collision/Neck1.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/Neck1.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -123,14 +123,14 @@
     <visual>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/Neck2.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Neck2.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/Neck2.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/Neck2.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -180,14 +180,14 @@
     <visual>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_Link1.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_Link1.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_Link1.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_Link1.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -208,14 +208,14 @@
     <visual>
       <origin rpy="0 1.5708 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_Link2.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_Link2.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 1.5708 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_Link2.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_Link2.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -236,14 +236,14 @@
     <visual>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link3.stl" scale="1.0 -1.0 1.0"/>
+        <mesh filename="meshes/visual/L_Link3.stl" scale="1.0 -1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link3.stl" scale="1.0 -1.0 1.0"/>
+        <mesh filename="meshes/collision/L_Link3.stl" scale="1.0 -1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -264,14 +264,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_Link4.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_Link4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_Link4.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_Link4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -292,14 +292,14 @@
     <visual>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_Link5.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_Link5.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <visual>
       <origin rpy="0 0 -2.0944" xyz="0.032 -0.074 0.0345"/>
       <geometry>
-        <mesh filename="./meshes/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red_color">
         <color rgba="0.8984375 0.0 0.0703125 1"/>
@@ -308,7 +308,7 @@
     <visual>
       <origin rpy="0 0 -2.0944" xyz="0.013 -0.107 0.0345"/>
       <geometry>
-        <mesh filename="./meshes/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="black_color">
         <color rgba="0.2 0.2 0.2 1"/>
@@ -317,7 +317,7 @@
     <collision>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_Link5.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_Link5.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -352,14 +352,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_Link6.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_Link6.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_Link6.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_Link6.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -398,14 +398,14 @@
     <visual>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_Link7.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_Link7.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_Link7.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_Link7.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -427,14 +427,14 @@
       <!--origin rpy="3.14159 0 0" xyz="0.0 0.0 0.0"/-->
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_HandA.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_HandA.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_HandA.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_HandA.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -457,14 +457,14 @@
       <!-- origin rpy="3.14159 0 0" xyz="0.0 0.0 0.0"/ -->
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/R_HandB.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/R_HandB.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/R_HandB.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/R_HandB.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -494,14 +494,14 @@
     <visual>
       <origin rpy="-1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link1.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_Link1.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="-1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link1.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_Link1.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -522,14 +522,14 @@
     <visual>
       <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link2.stl" scale="-1.0 1.0 -1.0"/>
+        <mesh filename="meshes/visual/L_Link2.stl" scale="-1.0 1.0 -1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link2.stl" scale="-1.0 1.0 -1.0"/>
+        <mesh filename="meshes/collision/L_Link2.stl" scale="-1.0 1.0 -1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -550,14 +550,14 @@
     <visual>
       <origin rpy="-1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link3.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_Link3.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="-1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link3.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_Link3.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -578,14 +578,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link4.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_Link4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link4.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_Link4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -606,14 +606,14 @@
     <visual>
       <origin rpy="-1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link5.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_Link5.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <visual>
       <origin rpy="3.1415926 0 2.0944" xyz="0.032 0.074 -0.0346"/>
       <geometry>
-        <mesh filename="./meshes/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red_color">
         <color rgba="0.8984375 0.0 0.0703125 1"/>
@@ -622,7 +622,7 @@
     <visual>
       <origin rpy="3.1415926 0 2.0944" xyz="0.013 0.107 -0.0346"/>
       <geometry>
-        <mesh filename="./meshes/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="black_color">
         <color rgba="0.2 0.2 0.2 1"/>
@@ -631,7 +631,7 @@
     <collision>
       <origin rpy="-1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link5.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_Link5.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -666,14 +666,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link6.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_Link6.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link6.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_Link6.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -712,14 +712,14 @@
     <visual>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_Link7.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_Link7.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_Link7.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_Link7.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -740,14 +740,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_HandA.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_HandA.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_HandA.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_HandA.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
@@ -769,14 +769,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/visual/L_HandB.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/visual/L_HandB.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="./meshes/collision/L_HandB.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="meshes/collision/L_HandB.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <inertial>
