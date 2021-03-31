@@ -39,64 +39,70 @@ if __name__ == '__main__':
         phi=lambda x: x.astype(np.float32, copy=False),  # 特徴抽出関数
         update_interval=1,
         replay_start_size=100000,
-        gpu=-1,  # set to -1 if no GPU
+        gpu=-1,  # set to -1 if no GPU, default to 0
         minibatch_size=256,
         entropy_target=-n_actions,
         temperature_optimizer_lr=3e-4
     )
 
     # エージェントの学習
-    n_episodes = 30000
+    n_episodes = 50000
     max_episode_len = 200
 
-    # # エピソードの反復
-    # for i in range(1, n_episodes + 1):
-    #     # 環境の初期化
-    #     obs = env.reset()
-    #     R = 0  # total rewards
-    #     t = 0  # time step
+    # エピソードの反復
+    for i in range(1, n_episodes + 1):
+        # 環境の初期化
+        obs = env.reset()
+        R = 0  # total rewards
+        t = 0  # time step
 
-    #     while True:
-    #         # 状態(観測)は[H, W, C]の画像なので，pytorchで扱えるchannel first[(N), C, H, W]に変換
-    #         obs = obs.transpose(2, 0, 1)
-    #         # 状態(観測)から行動を生成
-    #         action = agent.act(obs)
+        while True:
+            # 状態(観測)は[H, W, C]の画像なので，pytorchで扱えるchannel first[(N), C, H, W]に変換
+            obs = obs.transpose(2, 0, 1)
+            # 状態(観測)から行動を生成
+            action = agent.act(obs)
 
-    #         # 環境を1ステップ進める
-    #         obs, reward, done, info = env.step(action)
-    #         R += reward
-    #         t += 1
-    #         reset = (t == max_episode_len)
-    #         agent.observe(obs, reward, done, reset)
+            # 環境を1ステップ進める
+            obs, reward, done, info = env.step(action)
+            R += reward
+            t += 1
+            reset = (t == max_episode_len)
+            agent.observe(obs, reward, done, reset)
 
-    #         # エピソード完了
-    #         if done or reset:
-    #             break
+            # エピソード完了
+            if done or reset:
+                break
 
-    #     if i % 10 == 0:
-    #         print(f'episode: {i} total_rewards: {R}')
-    #     if i % 50 == 0:
-    #         print(f'statistics: {agent.get_statistics()}')
-    # print('finished!')
+        # ログの保存
+        if i % 10 == 0:
+            print(f'episode: {i} total_rewards: {R}')
+            with open('agent/log.txt', mode='a') as f:
+                f.write(f'episode: {i} total_rewards: {R}\n')
+        if i % 50 == 0:
+            print(f'statistics: {agent.get_statistics()}')
+            with open('agent/log.txt', mode='a') as f:
+                f.write(f'statistics: {agent.get_statistics()}\n')
+    print('finished!')
 
-    # # 学習したエージェントを'agent'ディレクトリに保存
-    # agent.save('agent')
+    # 学習したエージェントを'agent'ディレクトリに保存
+    agent.save('agent')
 
-    # # 学習したエージェントを'agent'ディレクトリから読み込む
-    # # agent.load('agent')
+    # 学習したエージェントを'agent'ディレクトリから読み込む
+    # agent.load('agent')
 
-    # PFRLが用意してくれているユーティリティ関数で訓練を行う
-    import logging
-    import sys
-    logging.basicConfig(level=logging.INFO, stream=sys.stdout, format='')
+    # # PFRLが用意してくれているユーティリティ関数で訓練を行う
+    # # obs周りでエラーが出るので今は使えない
+    # import logging
+    # import sys
+    # logging.basicConfig(level=logging.INFO, stream=sys.stdout, format='')
 
-    pfrl.experiments.train_agent_with_evaluation(
-        agent,
-        env,
-        steps=20000,                # Train the agent for 20000 steps
-        eval_n_steps=None,          # We evaluate for episodes, not time
-        eval_n_episodes=10,         # 10 episodes are sampled for each evaluation
-        train_max_episode_len=200,  # Maximum length of each episode
-        eval_interval=1000,         # Evaluate the agent after every 1000 steps
-        outdir='result',            # Save everything to 'result' directory
-    )
+    # pfrl.experiments.train_agent_with_evaluation(
+    #     agent,
+    #     env,
+    #     steps=20000,                # Train the agent for 20000 steps
+    #     eval_n_steps=None,          # We evaluate for episodes, not time
+    #     eval_n_episodes=10,         # 10 episodes are sampled for each evaluation
+    #     train_max_episode_len=200,  # Maximum length of each episode
+    #     eval_interval=1000,         # Evaluate the agent after every 1000 steps
+    #     outdir='result',            # Save everything to 'result' directory
+    # )

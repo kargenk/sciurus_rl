@@ -129,6 +129,6 @@ dmypy.json
 .pyre/
 
 # my files
-result/
+movie/
 sample/
 .DS_Store
