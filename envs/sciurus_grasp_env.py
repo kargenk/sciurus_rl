@@ -90,7 +90,7 @@ class SciurusGraspEnv(gym.Env):
                 self.cid = p.connect(p.GUI)
             p.resetDebugVisualizerCamera(1.3, 180, -41, [0.52, -0.2, -0.33])
         else:
-            self.cid = p.connect(p.GUI)  # p.DIRECT
+            self.cid = p.connect(p.DIRECT)  # GUIで描画する場合はp.GUI，訓練する場合などはp.DIRECT
         self.seed()
 
         # 離散or連続の問題設定と行動空間(現在位置からの差分)，観測空間(RGB画像の画素値)
@@ -332,6 +332,7 @@ class SciurusGraspEnv(gym.Env):
 
         return observation, reward, done, debug
 
+    # not to use
     def my_render(self, mode: str = 'human') -> None:
         """
         シミュレーション中の画像をレンダリングする関数．
@@ -436,17 +437,33 @@ class SciurusGraspEnv(gym.Env):
 
 
 if __name__ == '__main__':
+    # 環境の生成
     env = SciurusGraspEnv()
-    env.reset()
+    print('observation space:', env.observation_space)
+    print('action space:', env.action_space)
 
-    # 把持テスト用
-    for _ in range(2):
-        observation, reward, done, debug = env.step([5, 0, 0, -10, 0, 0, 0, 0, 0])  # 把持テスト用
-        print(debug)
+    # 初期の状態を観測
+    obs_init = env.reset()
+    print('initial observation shape:', obs_init.shape)
+    plt.imshow(obs_init)
+    plt.title('initial observation')
+    plt.show()
 
-    # # ランダムに行動を選択
-    # while True:
-    #     observation, reward, done, supp = env.step(env.action_space.sample())  # random
+    # ランダムに行動を洗濯して次の状態を観測
+    action = env.action_space.sample()
+    obs_next, r, done, info = env.step(action)
+    plt.imshow(obs_next)
+    plt.title('next observation')
+    plt.show()
+    print('next obserbation shape:', obs_next.shape)
+    print('reward:', r)
+    print('done:', done)
+    print('info:', info)
 
-    # plt.imshow(observation)
-    # plt.show()
+    # # GUIでレンダリングする場合はアンコメント
+    # env.render()
+
+    # # 把持テスト用
+    # for _ in range(2):
+    #     observation, reward, done, debug = env.step([5, 0, 0, -10, 0, 0, 0, 0, 0])  # 把持テスト用
+    #     print(debug)
